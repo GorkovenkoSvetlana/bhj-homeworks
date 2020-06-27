@@ -1,15 +1,14 @@
 const dead = document.getElementById('dead');
 const lost = document.getElementById('lost');
 
-
 function getHole(index) {
-  let holeArr = document.getElementsByClassName('hole');
-  return holeArr;
+  let hole = document.getElementById('hole') + index;
+  return hole;
 }
 
 for (let i = 1; i < 10; i++) {
 
-  let hole = getHole(index);
+  let hole = getHole(i);
    
    hole.onclick = function() {
       if (hole.className.includes('hole_has-mole')) {
@@ -18,17 +17,20 @@ for (let i = 1; i < 10; i++) {
       lost.textContent ++;
   }
  
-  
     if (dead.textContent == 10) {
     alert('Победа!');
-    dead.textContent = 0;
-    lost.textContent = 0;
+    reset();
+
   } else if (lost.textContent == 5) {
     alert('Вы проиграли!');
-    dead.textContent = 0;
-    lost.textContent = 0;
+    reset();
  };
 }
+}
+
+function reset() {
+  dead.textContent = 0;
+  lost.textContent = 0;
 }
 
 
